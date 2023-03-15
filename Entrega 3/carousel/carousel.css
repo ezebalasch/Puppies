@@ -62,11 +62,12 @@ div.col-md-5 img.bd-placeholder-img{
   padding: 0 20rem;
 
 }
+
 /* Boton carrito */
 .botonesCarro {
   border: none;
   color: #fff;
-  background-image: linear-gradient(50deg, #f9c2cb, #ff28e2);
+  background-image: linear-gradient(170deg, #f9c2cb, #fc7087);
   border-radius: 20px;
   background-size: 100% auto;
   font-family: inherit;

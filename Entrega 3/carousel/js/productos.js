@@ -118,7 +118,6 @@ const bongo = new Perro(
 const arrayClientes = [frida, greta, ema, tomy, luci, kobu, sol, capi, bongo];
 
 // Array carrito
-
 let carrito = [];
 
 //Cargar carrito desde el Local storage
@@ -127,7 +126,7 @@ if (localStorage.getItem("carrito")) {
 } else {
 }
 
-//Cartas de Productos por cada uno
+//HTML de Cartas de Productos por cada uno
 const divCard = document.getElementById("cardContainer");
 arrayClientes.forEach((Perro) => {
   const card = document.createElement("div");
@@ -166,16 +165,30 @@ arrayClientes.forEach((Perro) => {
 
   divCard.appendChild(card);
 
-  //Agregar productos al carrito
+  //Agregar productos al carrito con evento click
   const boton = document.getElementById(`boton${Perro.id}`);
   boton.addEventListener("click", () => {
     agregarAlCarrito(Perro.id);
+    mostrarNumero();
   });
 });
 
 //Funcion agregar al carrito
-
+//Contiene una notificación agregada desde la librería sweet alert
 const agregarAlCarrito = (id) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    confirmButtonText: "Ver",
+    timer: 800,
+    timerProgressBar: true,
+  });
+
+  Toast.fire({
+    icon: "success",
+    title: "Agregado al carrito",
+  });
   const perroEnCarrito = carrito.find((Perro) => Perro.id === id);
   if (perroEnCarrito) {
     perroEnCarrito.cantidad++;
@@ -183,72 +196,130 @@ const agregarAlCarrito = (id) => {
     const Perro = arrayClientes.find((Perro) => Perro.id === id);
     carrito.push(Perro);
   }
-  console.log(carrito);
-  calcularTotal();
-  //Local storage
   localStorage.setItem("carrito", JSON.stringify(carrito));
 };
 
-//Mostrar el carrito de compras
-const contenedorCarrito = document.getElementById("bodyTablaCarrito");
-const verCarrito = document.getElementById("verCarrito");
-
-verCarrito.addEventListener("click", () => {
-  mostrarCarrito();
+//número visible en carrito que se elimina si es cero para mejorar la visibilidad
+const numeroCarro = document.getElementById("numeroEnCarro");
+const mostrarNumero = () => {
+  contadorCarro = carrito.length;
+  numeroCarro.innerHTML = "";
+  numero = document.createElement("span");
+  if (contadorCarro === 0) {
+    numero.innerHTML = ``;
+  } else {
+    numero.innerHTML = `${contadorCarro}`;
+  }
+  numeroCarro.appendChild(numero);
+};
+//abrir carrito
+const bolsaCarrito = document.getElementById("bolsaCarrito");
+bolsaCarrito.addEventListener("click", () => {
+  dispararCarro();
 });
-console.log(Perro.id);
-
-const mostrarCarrito = () => {
-  contenedorCarrito.innerHTML = "";
+//función con la tabla de carro
+function tablaCarro() {
+  let precio = 0;
+  let tabla = `
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="bodyTablaCarrito2">`;
   carrito.forEach((Perro) => {
-    const card = document.createElement("tr");
-
-    card.innerHTML = `
-        <th scope="row"><img
-        src="${Perro.img}"
-        class="img-crt"
-        alt="Perro"
-            /></th>
-        <td>${Perro.nombre}</td>
-        <td>${Perro.cantidad}</td>
-        <td>$${Perro.precio * Perro.cantidad}</td>
-        <td>
-        <div class="btn-group">
-          <button id="eliminar${
-            Perro.id
-          }" type="button" class="btn btn-outline-danger">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"></path>
-            </svg>
-            <span class="visually-hidden">Eliminar</span>
-          </button>
-          <button id="agregar${
-            Perro.id
-          }" type="button" class="btn btn-outline-secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"></path>
-            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
-            </svg>
-            <span class="visually-hidden">Agregar</span>
-          </button>
-          <button id="restar${
-            Perro.id
-          }" type="button" class="btn btn-outline-dark">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-dash" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"></path>
-            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
-            </svg>
-            <span class="visually-hidden">Restar</span>
-          </button>
-        </div>
-        </td>
-`;
-    contenedorCarrito.appendChild(card);
-
+    precio += Perro.precio * Perro.cantidad;
+    tabla += `<tr>
+    <th scope="row"><img
+    src="${Perro.img}"
+    class="img-crt"
+    alt="Perro"
+        /></th>
+    <td>${Perro.nombre}</td>
+    <td id="cantidad${Perro.id}">${Perro.cantidad}</td>
+    <td>$${Perro.precio * Perro.cantidad}</td>
+    <td>
+    <div class="btn-group">
+      <button id="eliminar${
+        Perro.id
+      }" type="button" class="btn btn-outline-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"></path>
+        </svg>
+        <span class="visually-hidden">Eliminar</span>
+      </button>
+      <button id="agregar${
+        Perro.id
+      }" type="button" class="btn btn-outline-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"></path>
+        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
+        </svg>
+        <span class="visually-hidden">Agregar</span>
+      </button>
+      <button id="restar${Perro.id}" type="button" class="btn btn-outline-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-dash" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"></path>
+        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
+        </svg>
+        <span class="visually-hidden">Restar</span>
+      </button>
+    </div>
+    </td>
+    </tr>`;
+  });
+  tabla += `</tbody>
+  </table>
+  <h3>Total: <span id="total"> $${precio}</span></h3>
+  `;
+  return tabla;
+}
+function dispararCarro() {
+  const tablaCarrito = tablaCarro();
+  Swal.fire({
+    title: "Carrito de compras",
+    html: tablaCarrito,
+    showCloseButton: true,
+    focusConfirm: false,
+    confirmButtonText: "Finalizar compra",
+    showDenyButton: true,
+    denyButtonText: "Vaciar Carrito",
+    width: 800,
+    //vaciar el carrito y mostrar swal
+    didRender: function () {
+      if (carrito !== undefined) {
+        let $cancelButton = document.querySelector(".swal2-deny");
+        $cancelButton.addEventListener("click", function () {
+          // Vaciar el carrito y actualizar la alerta con Sweet Alert
+          carrito = [];
+          mostrarNumero();
+          localStorage.clear();
+          Swal.fire({
+            icon: "warning",
+            title: "Tu carrito está vacío",
+            text: "Puedes agregar nuevos productos!",
+          });
+        });
+      }
+    },
+    //finalizar compra mostrar swal
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Compra realizada con éxito!", "", "success");
+    }
+  });
+  carrito.forEach((Perro) => {
     //Eliminar producto del carrito
     const botonEliminar = document.getElementById(`eliminar${Perro.id}`);
     botonEliminar.addEventListener("click", () => {
       eliminarDelCarrito(Perro.id);
+      mostrarNumero();
+      calcularTotal(Perro.precio);
     });
 
     //Sumar cantidad al producto del carrito
@@ -256,54 +327,46 @@ const mostrarCarrito = () => {
     botonSumar.addEventListener("click", () => {
       Perro.cantidad++;
       Perro.precio * Perro.cantidad;
-      mostrarCarrito();
-      calcularTotal();
+      dispararCarro();
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      calcularTotal(Perro.precio);
     });
     //Restar cantidad al producto del carrito, si es menor a 1 se elimina el producto del carrito
     const botonRestar = document.getElementById(`restar${Perro.id}`);
     botonRestar.addEventListener("click", () => {
       if (Perro.cantidad == 1) {
         eliminarDelCarrito(Perro.id);
+        mostrarNumero();
       } else {
         Perro.cantidad--;
         Perro.precio * Perro.cantidad;
+        localStorage.setItem("carrito", JSON.stringify(carrito));
       }
-      mostrarCarrito();
-      calcularTotal();
-    });
-
-    //Vaciar Carrito de compras
-    const botonVaciar = document.getElementById("vaciarCarrito");
-    botonVaciar.addEventListener("click", () => {
-      carrito = [];
-      mostrarCarrito();
-
-      //Local storage
-      localStorage.clear();
-      calcularTotal();
+      dispararCarro();
+      calcularTotal(Perro.precio);
     });
   });
-};
-
+}
+//Elimina producto completo del carrito
 const eliminarDelCarrito = (id) => {
   const producto = carrito.find((Perro) => Perro.id === id);
   const indice = carrito.indexOf(producto);
   carrito.splice(indice, 1);
-  mostrarCarrito();
-  //Local Storage
+  dispararCarro();
   localStorage.setItem("carrito", JSON.stringify(carrito));
 };
 
 //Mostrar el total de la compra
-const total = document.getElementById("total");
-const calcularTotal = () => {
-  if (localStorage === undefined) {
-    total.innerHTML = `Total $0`;
+const calcularTotal = (precio) => {
+  const total = document.getElementById("total");
+  if (localStorage === undefined || carrito.length === 0) {
+    total.innerHTML = ` $0`;
   } else {
-    let totalCompra = 0;
+    localStorage += precio;
+
     carrito.forEach((Perro) => {
       totalCompra += Perro.precio * Perro.cantidad;
     });
-    total.innerHTML = `Total $${totalCompra}`;
+    total.innerHTML = ` $${precio}`;
   }
 };

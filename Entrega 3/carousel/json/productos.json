@@ -1,0 +1,210 @@
+{
+    "duenios": [
+      {
+        "nombre": "Ezequiel",
+        "apellido": "Balasch",
+        "edad": 21,
+        "email": "ezebalasch@gmail.com"
+      },
+      {
+        "nombre": "Franco",
+        "apellido": "Balasch",
+        "edad": 18,
+        "email": "franco.balasch@gmail.com"
+      },
+      {
+        "nombre": "Armando",
+        "apellido": "Balasch",
+        "edad": 50,
+        "email": "armando.balasch@gmail.com"
+      }
+    ],
+    "perros": [
+      {
+        "id": 1,
+        "nombre": "Frida",
+        "precio": 25000,
+        "peso": 23,
+        "edad": 16,
+        "raza": "Caniche",
+        "img": "../../assets/img/perro/peques/frida.jpg",
+        "duenio": [
+          {
+            "nombre": "Ezequiel",
+            "apellido": "Balasch",
+            "edad": 21,
+            "email": "ezebalasch@gmail.com"
+          },
+          {
+            "nombre": "Franco",
+            "apellido": "Balasch",
+            "edad": 18,
+            "email": "franco.balasch@gmail.com"
+          },
+          {
+            "nombre": "Armando",
+            "apellido": "Balasch",
+            "edad": 50,
+            "email": "armando.balasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 2,
+        "nombre": "Greta",
+        "precio": 47500,
+        "peso": 15.5,
+        "edad": 5,
+        "raza": "Golden Retriever",
+        "img": "../../assets/img/perro/peques/greta.jpg",
+        "duenio": [
+          {
+            "nombre": "Ezequiel",
+            "apellido": "Balasch",
+            "edad": 21,
+            "email": "ezebalasch@gmail.com"
+          },
+          {
+            "nombre": "Franco",
+            "apellido": "Balasch",
+            "edad": 18,
+            "email": "franco.balasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 3,
+        "nombre": "Ema",
+        "precio": 63900,
+        "peso": 19.5,
+        "edad": 15,
+        "raza": "Jack Russell",
+        "img": "../../assets/img/perro/peques/ema.jpg",
+        "duenio": [
+          {
+            "nombre": "Franco",
+            "apellido": "Balasch",
+            "edad": 18,
+            "email": "franco.balasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 4,
+        "nombre": "Tomy",
+        "precio": 3500,
+        "peso": 12.5,
+        "edad": 16,
+        "raza": "Chihuahua",
+        "img": "../../assets/img/perro/peques/tomy.jpg",
+        "duenio": [
+          {
+            "nombre": "Ezequiel",
+            "apellido": "Balasch",
+            "edad": 21,
+            "email": "ezebalasch@gmail.com"
+          },
+          {
+            "nombre": "Franco",
+            "apellido": "Balasch",
+            "edad": 18,
+            "email": "franco.balasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 5,
+        "nombre": "Luci",
+        "precio": 16700,
+        "peso": 14,
+        "edad": 9,
+        "raza": "Bichón Frisé",
+        "img": "../../assets/img/perro/peques/luci.jpg",
+        "duenio": [
+          {
+            "nombre": "Franco",
+            "apellido": "Balasch",
+            "edad": 18,
+            "email": "franco.balasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 6,
+        "nombre": "Kobu",
+        "precio": 49200,
+        "peso": 12,
+        "edad": 6,
+        "raza": "Pitbull",
+        "img": "../../assets/img/perro/peques/kobu.jpg",
+        "duenio": [
+          {
+            "nombre": "Ezequiel",
+            "apellido": "Balasch",
+            "edad": 21,
+            "email": "ezebalasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 7,
+        "nombre": "Sol",
+        "precio": 28400,
+        "peso": 11,
+        "edad": 2,
+        "raza": "Labrador Retriever",
+        "img": "../../assets/img/perro/peques/sol.jpg",
+        "duenio": [
+          {
+            "nombre": "Franco",
+            "apellido": "Balasch",
+            "edad": 18,
+            "email": "franco.balasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 8,
+        "nombre": "Capitan",
+        "precio": 34100,
+        "peso": 17,
+        "edad": 1,
+        "raza": "Pitbull",
+        "img": "../../assets/img/perro/peques/capitan.jpg",
+        "duenio": [
+          {
+            "nombre": "Armando",
+            "apellido": "Balasch",
+            "edad": 50,
+            "email": "armando.balasch@gmail.com"
+          }
+        ],
+        "cantidad": 1
+      },
+      {
+        "id": 9,
+        "nombre": "Bongo",
+        "precio": 65200,
+        "peso": 22,
+        "edad": 12,
+        "raza": "French Bulldog",
+        "img": "../../assets/img/perro/peques/bongo.jpg",
+        "duenio": [
+            {
+              "nombre": "Franco",
+              "apellido": "Balasch",
+              "edad": 18,
+              "email": "franco.balasch@gmail.com"
+            }
+          ],
+        "cantidad": 1
+      }
+    ]
+  }
