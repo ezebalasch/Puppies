@@ -1,0 +1,76 @@
+{
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Juguete Acuático",
+        "precio": 2500,
+        "descripcion": "Juguete de goma Resistente al agua",
+        "img": "../../assets/img/perro/peques/productos/acuatico.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 2,
+        "nombre": "Collar",
+        "precio": 4500,
+        "descripcion": "Tejido de tela a la moda",
+        "img": "../../assets/img/perro/peques/productos/collar.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 3,
+        "nombre": "Correa",
+        "precio": 2280,
+        "descripcion": "Agarre completo para nuestra mascota",
+        "img": "../../assets/img/perro/peques/productos/correa.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 4,
+        "nombre": "Frisby",
+        "precio": 1920,
+        "descripcion": "Plástico resistente a los impactos",
+        "img": "../../assets/img/perro/peques/productos/frisbi.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 5,
+        "nombre": "Hueso",
+        "precio": 2830,
+        "descripcion": "Irrompible y duradero para juego",
+        "img": "../../assets/img/perro/peques/productos/hueso.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 6,
+        "nombre": "Pato de hule",
+        "precio": 1100,
+        "descripcion": "Para relajarlos en la hora del baño",
+        "img": "../../assets/img/perro/peques/productos/patoule.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 7,
+        "nombre": "Pelota",
+        "precio": 1100,
+        "descripcion": "Hecha con materiales apropiados para la mascota",
+        "img": "../../assets/img/perro/peques/productos/pelota.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 8,
+        "nombre": "Peluche Elefante",
+        "precio": 1100,
+        "descripcion": "Compañero de vida de nuestras mascotas",
+        "img": "../../assets/img/perro/peques/productos/peluche.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 9,
+        "nombre": "Soga de trapo",
+        "precio": 1100,
+        "descripcion": "Resistente a los tironeos más fuertes",
+        "img": "../../assets/img/perro/peques/productos/soga.jpg",
+        "cantidad": 1
+      }
+    ]
+}
