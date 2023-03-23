@@ -2,6 +2,7 @@
     "productos": [
       {
         "id": 1,
+        "tipo": "juguete",
         "nombre": "Juguete Acuático",
         "precio": 2500,
         "descripcion": "Juguete de goma Resistente al agua",
@@ -10,6 +11,7 @@
       },
       {
         "id": 2,
+        "tipo": "vestimenta",
         "nombre": "Collar",
         "precio": 4500,
         "descripcion": "Tejido de tela a la moda",
@@ -18,6 +20,7 @@
       },
       {
         "id": 3,
+        "tipo": "vestimenta",
         "nombre": "Correa",
         "precio": 2280,
         "descripcion": "Agarre completo para nuestra mascota",
@@ -26,6 +29,7 @@
       },
       {
         "id": 4,
+        "tipo": "juguete",
         "nombre": "Frisby",
         "precio": 1920,
         "descripcion": "Plástico resistente a los impactos",
@@ -34,6 +38,7 @@
       },
       {
         "id": 5,
+        "tipo": "juguete",
         "nombre": "Hueso",
         "precio": 2830,
         "descripcion": "Irrompible y duradero para juego",
@@ -42,6 +47,7 @@
       },
       {
         "id": 6,
+        "tipo": "juguete",
         "nombre": "Pato de hule",
         "precio": 1100,
         "descripcion": "Para relajarlos en la hora del baño",
@@ -50,6 +56,7 @@
       },
       {
         "id": 7,
+        "tipo": "juguete",
         "nombre": "Pelota",
         "precio": 1100,
         "descripcion": "Hecha con materiales apropiados para la mascota",
@@ -58,6 +65,7 @@
       },
       {
         "id": 8,
+        "tipo": "juguete",
         "nombre": "Peluche Elefante",
         "precio": 1100,
         "descripcion": "Compañero de vida de nuestras mascotas",
@@ -66,10 +74,65 @@
       },
       {
         "id": 9,
+        "tipo": "juguete",
         "nombre": "Soga de trapo",
         "precio": 1100,
         "descripcion": "Resistente a los tironeos más fuertes",
         "img": "../../assets/img/perro/peques/productos/soga.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 10,
+        "tipo": "corte",
+        "nombre": "Corte perro pequeño",
+        "precio": 2835,
+        "descripcion": "Corte completo con limpieza incluída",
+        "img": "../../assets/img/perro/peques/productos/corte-peque.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 11,
+        "tipo": "corte",
+        "nombre": "Corte perro grande",
+        "precio": 4765,
+        "descripcion": "Corte completo con limpieza incluída",
+        "img": "../../assets/img/perro/peques/productos/corte-grande.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 12,
+        "tipo": "limpieza",
+        "nombre": "Limpieza perro pequeño",
+        "precio": 835,
+        "descripcion": "Limpieza y aplicado de desparasitante",
+        "img": "../../assets/img/perro/peques/productos/limpieza-peque.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 13,
+        "tipo": "limpieza",
+        "nombre": "Limpieza perro grande",
+        "precio": 1575,
+        "descripcion": "Limpieza y aplicado de desparasitante",
+        "img": "../../assets/img/perro/peques/productos/limpieza-grande.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 14,
+        "tipo": "baño",
+        "nombre": "Baño perro pequeño",
+        "precio": 1535,
+        "descripcion": "Baño y perfumado fragancia a elección",
+        "img": "../../assets/img/perro/peques/productos/banio-peque.jpg",
+        "cantidad": 1
+      },
+      {
+        "id": 15,
+        "tipo": "baño",
+        "nombre": "Baño perro grande",
+        "precio": 3000,
+        "descripcion": "Baño y perfumado fragancia a elección",
+        "img": "../../assets/img/perro/peques/productos/banio-grande.jpg",
         "cantidad": 1
       }
     ]

@@ -2,13 +2,12 @@ const divCard = document.getElementById("cardContainer");
 
 const listadoProductos = "json/productos.json";
 
-//Consumo de una API interna a través de fetch
+// Consumo de una API interna a través de fetch
 fetch(listadoProductos)
   .then((respuesta) => respuesta.json())
   .then((datos) => {
     // Array carrito
     let carrito = [];
-
     //Carta de producto por cada perro dentro de la API
     datos.productos.forEach((Producto) => {
       const card = document.createElement("div");
@@ -178,7 +177,7 @@ fetch(listadoProductos)
         confirmButtonText: "Finalizar compra",
         showDenyButton: true,
         denyButtonText: "Vaciar Carrito",
-        width: 800,
+        width: 900,
         //vaciar el carrito y mostrar swal
         didRender: function () {
           if (carrito !== undefined) {
